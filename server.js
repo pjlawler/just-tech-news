@@ -12,7 +12,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(routes);
 
 // turn on connection to db and server
-sequelize.sync({ force: false}).then(() => {
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now lstening'));
 });
 
+// 13.3.4 Create the Post Model
