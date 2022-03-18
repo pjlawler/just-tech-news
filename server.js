@@ -16,4 +16,4 @@ sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now lstening'));
 });
 
-// 13.3.4 Create the Post Model
+// 13.5.1
