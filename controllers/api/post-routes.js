@@ -65,7 +65,7 @@ router.get('/:id', (req, res) => {
   })
     .then(dbPostData => {
       if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+        res.status(404).json({ message: 'No post found to GET with this id' });
         return;
       }
       res.json(dbPostData);
@@ -117,7 +117,7 @@ router.put('/:id', withAuth, (req, res) => {
   )
     .then(dbPostData => {
       if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+        res.status(404).json({ message: 'No post found with this id to update' });
         return;
       }
       res.json(dbPostData);
@@ -129,22 +129,27 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
+  
+  
+
   Post.destroy({
     where: {
       id: req.params.id
     }
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
-        return;
-      }
-      res.json(dbPostData);
+  .then(dbPostData => {
+    if (!dbPostData) {
+      res.status(404).json({ message: 'No post found to delete with this id' });
+      return;
+    }
+    res.json(dbPostData);
+   
     })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
+  
 });
 
 module.exports = router;
